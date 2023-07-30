@@ -18,6 +18,16 @@ public class SinglyLinkedList{
         }
         System.out.println("null");
     }
+    public boolean search(int key){
+        ListNode current = head;
+        while(current!=null){
+            if(current.data==key){
+                return true;
+            }
+            current=current.next;
+        }
+        return false;
+    }
     public static void main(String[] args) {
         SinglyLinkedList sll= new SinglyLinkedList();
         sll.head= new ListNode(10);
@@ -29,5 +39,8 @@ public class SinglyLinkedList{
         third.next= fourth;
         /*now i will be printing the SinglyLinkedList */
         sll.display();
+        System.out.println(sll.search(1));
+
+
     }
 }
