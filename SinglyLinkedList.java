@@ -144,6 +144,31 @@ public class SinglyLinkedList{
         slowPtr.next=null;
     }
 
+    public static ListNode merge(ListNode a, ListNode b){
+        ListNode dummy= new ListNode(0);
+        ListNode tail= dummy;
+        while(a!=null && b!=null){
+            if (a.data<=b.data) {
+                tail.next=a;
+                a=a.next;
+            }
+            else{
+                tail.next=b;
+                b=b.next;
+            }
+            tail=tail.next;
+
+        }
+        if(a==null){
+            tail.next=b;
+        }
+        else{
+            tail.next=a;
+        }
+        return dummy.next;
+    }
+
+
     public static void main(String[] args) {
         SinglyLinkedList sll= new SinglyLinkedList();
         sll.head=new ListNode(10);
@@ -165,7 +190,22 @@ public class SinglyLinkedList{
         // sll.display();
         // System.out.println(sll.containLoop());
         // System.out.println(sll.startNodeInALoop().data);
-
+        SinglyLinkedList sll1= new SinglyLinkedList();
+        sll1.insertEnd(1);
+        sll1.insertEnd(4);
+        sll1.insertEnd(8);
+        SinglyLinkedList sll2= new SinglyLinkedList();
+        sll2.insertEnd(3);
+        sll2.insertEnd(5);
+        sll2.insertEnd(8);
+        sll2.insertEnd(9);
+        sll2.insertEnd(14);
+        sll2.insertEnd(18);
+        sll1.display();
+        sll2.display();
+        SinglyLinkedList result=new SinglyLinkedList();
+        result.head=merge(sll1.head,sll2.head);
+        result.display();
 
     }
 }
